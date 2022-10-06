@@ -28,7 +28,6 @@ import subprocess
 import sys
 import tarfile
 import tempfile
-from metadata import METADATA
 from contextlib import closing
 from contextlib import contextmanager
 from functools import cmp_to_key
@@ -411,7 +410,7 @@ class Installer:
             return "from an offline file", current_version
 
         print(colorize("info", "Retrieving Poetry metadata"))
-            
+
         metadata = json.loads(self._get(self.METADATA_URL).decode('utf-8'))
 
         def _compare_versions(x, y):
