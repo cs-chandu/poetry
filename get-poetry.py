@@ -28,7 +28,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
-
+from metadata import METADATA
 from contextlib import closing
 from contextlib import contextmanager
 from functools import cmp_to_key
@@ -312,7 +312,7 @@ environment variable. This has not been done automatically.
 class Installer:
     CURRENT_PYTHON = sys.executable
     CURRENT_PYTHON_VERSION = sys.version_info[:2]
-    METADATA_URL = "https://pypi.org/pypi/poetry/json"
+    METADATA_URL = METADATA
     VERSION_REGEX = re.compile(
         r"v?(\d+)(?:\.(\d+))?(?:\.(\d+))?(?:\.(\d+))?"
         "("
