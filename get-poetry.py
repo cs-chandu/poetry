@@ -312,7 +312,7 @@ environment variable. This has not been done automatically.
 class Installer:
     CURRENT_PYTHON = sys.executable
     CURRENT_PYTHON_VERSION = sys.version_info[:2]
-    METADATA_URL = METADATA
+    METADATA_URL = "https://pypi.org/pypi/poetry/json"
     VERSION_REGEX = re.compile(
         r"v?(\d+)(?:\.(\d+))?(?:\.(\d+))?(?:\.(\d+))?"
         "("
@@ -411,8 +411,8 @@ class Installer:
             return "from an offline file", current_version
 
         print(colorize("info", "Retrieving Poetry metadata"))
-
-        metadata = json.loads(self._get(self.METADATA_URL).decode())
+            
+        metadata = json.loads(self._get(self.METADATA_URL).decode('utf-8'))
 
         def _compare_versions(x, y):
             mx = self.VERSION_REGEX.match(x)
